@@ -6,7 +6,7 @@ import * as S from "./styles";
 
 Modal.setAppElement("#root");
 
-export default function CadastroJogador({ onConfirm, msg }) {
+export default function CadastroJogada({ onConfirm, msg }) {
   const [reg, setReg] = useState(null);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function CadastroJogador({ onConfirm, msg }) {
   };
   const handleNome = (event) => {
     const lanc = reg;
-    lanc.nome = event.target.value;
+    lanc.nome = event.target.value.toUpperCase();
     setReg(lanc);
   };
 
@@ -37,7 +37,7 @@ export default function CadastroJogador({ onConfirm, msg }) {
         </header>
 
         <div className="row">
-          <label className="active">Nome do Jogador</label>
+          <label className="active">Nome da Jogada</label>
           <input
             defaultValue={reg !== null && reg.nome}
             type="text"

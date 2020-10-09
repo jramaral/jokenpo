@@ -6,54 +6,50 @@ import * as S from "./styles";
 
 Modal.setAppElement("#root");
 
-export default function CadastroJogador({ onConfirm, msg }) {
-  const [reg, setReg] = useState(null);
-
-  useEffect(() => {
-    const data = {
-      id: 0,
-      nome: "",
-    };
-    setReg(data);
-  }, []);
-
-  const handleCloseCancel = () => {
+export default function Resultado({ onConfirm, msg, result }) {
+  const [hasData, setHasData] = useState(false);
+  const handleClose = () => {
     onConfirm(false);
   };
-  const handleSave = () => {
-    onConfirm(true, reg);
-  };
-  const handleNome = (event) => {
-    const lanc = reg;
-    lanc.nome = event.target.value;
-    setReg(lanc);
-  };
 
+  useEffect(() => {
+    if (Boolean(result)) {
+      setHasData(true);
+    }
+  }, [result]);
   return (
     <>
       <Modal isOpen={true} style={stylecss}>
         <header>
-          <span style={styles.title}>{msg}</span>
+          {hasData ? (
+            <span style={styles.title}>{msg}</span>
+          ) : (
+            <span style={styles.title}>ATENÇÃO</span>
+          )}
         </header>
 
         <div className="row">
-          <label className="active">Nome do Jogador</label>
-          <input
-            defaultValue={reg !== null && reg.nome}
-            type="text"
-            onChange={handleNome}
-            autoFocus
-            className="validate"
-          />
+          {hasData ? (
+            <>
+              <label className="active">Jogador 1: {result.jogador1}</label>
+
+              <label className="active">Jogador 2: {result.jogador2}</label>
+
+              <label className="active">Jogador 3: {result.jogador3}</label>
+
+              <h5>{result.jogadorVencedor}</h5>
+            </>
+          ) : (
+            <span>
+              TODOS OS PARÂMETROS SÃO NECESSÁRIOS PARA OBTER O RESULTADO!
+            </span>
+          )}
         </div>
 
         <S.ContainerButton>
           <S.ContainerGreen>
-            <button onClick={handleSave}>SALVAR</button>
+            <button onClick={handleClose}>OK</button>
           </S.ContainerGreen>
-          <S.ContainerRed>
-            <button onClick={handleCloseCancel}>CANCELAR</button>
-          </S.ContainerRed>
         </S.ContainerButton>
       </Modal>
     </>

@@ -6,7 +6,9 @@ export default function Header() {
   return (
     <S.HeaderBase>
       <S.LadoEsquerdo>
-        <img src={Logo} alt="Logotipo jokenpo" />
+        <Link to="/">
+          <img src={Logo} alt="Logotipo jokenpo" />
+        </Link>
       </S.LadoEsquerdo>
       <S.LadoDireito>
         <span className="dividir" />
