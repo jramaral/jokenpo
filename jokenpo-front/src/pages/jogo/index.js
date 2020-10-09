@@ -86,7 +86,6 @@ export default function Jogo() {
   return (
     <PageDefault>
       <div className="container">
-        <p>Pagina do Jogo</p>
         <div className="row">
           <div className="col s6">
             <label>Jogador 1</label>

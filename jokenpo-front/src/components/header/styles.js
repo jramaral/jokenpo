@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const HeaderBase = styled.header`
-  background-color: #f0f0f0;
+  background-color: #f16029;
   display: flex;
   padding-right: 20px;
+  border-bottom: 10px solid #c13e21;
 `;
 
 export const LadoEsquerdo = styled.div`
@@ -28,9 +29,15 @@ export const LadoDireito = styled.div`
     font-weight: bold;
     text-decoration: none;
     margin: 0 10px;
+    color: #000;
 
     &:hover {
-      color: #e579;
+      color: white;
     }
+  }
+  .dividir::after {
+    content: "|";
+    margin: 0 5px;
+    color: #000;
   }
 `;
